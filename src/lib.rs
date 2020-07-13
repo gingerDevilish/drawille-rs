@@ -166,6 +166,50 @@ impl Canvas {
             self.set(x as u32, y as u32);
         }
     }
+
+     /// Draw a ellipse with the middle `(xm, ym)` and the radius a and b onto the `Canvas`.
+    pub fn ellipse_center(&mut self, xm: u32, ym: u32, a: u32, b: u32) {
+        let a2 = a as i32 * a as i32;
+        let b2 = b as i32 * b as i32;
+        let mut dx = 0u32;
+        let mut dy = b;
+        let mut err: i32 = b2 - (2 * b as i32 - 1) * a2;
+
+        loop {
+            self.set(xm + dx, ym + dy);
+            if xm >= dx {
+                self.set(xm - dx, ym + dy);
+                if ym >= dy {
+                    self.set(xm - dx, ym - dy);
+                }
+            }
+            if ym >= dy {
+                self.set(xm + dx, ym - dy);
+            }
+
+            let err_plus = err + err;
+            let new_err1 = (2 * dx as i32 + 1) * b2;
+            if err_plus < new_err1 {
+                dx += 1;
+                err += new_err1;
+            }
+            let new_err2 = (2 * dy as i32 - 1) * a2;
+            if err_plus > -new_err2 {
+                if dy <= 1 {
+                    break;
+                }
+                dy -= 1;
+                err -= new_err2;
+            }
+        }
+        while dx < a {
+            dx += 1;
+            self.set(xm + dx, ym);
+            if xm >= dx {
+                self.set(xm - dx, ym);
+            }
+        }
+    }
 }
 
 /// A ‘turtle’ that can walk around a canvas drawing lines.
