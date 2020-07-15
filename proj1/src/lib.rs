@@ -228,8 +228,14 @@
         pub fn new(x: f32, y: f32) -> Turtle {
             Turtle {
                 cvs: Canvas::new(0, 0),
-                x: x,
-                y: y,
+                x
+                :
+
+                x,
+                y
+                :
+
+                y,
                 brush: true,
                 rotation: 0.0,
             }
@@ -240,9 +246,7 @@
         /// The turtle starts with its brush down, facing right.
         pub fn from_canvas(x: f32, y: f32, cvs: Canvas) -> Turtle {
             Turtle {
-                cvs: cvs,
-                x: x,
-                y: y,
+                cvs: cvs,x: x,y: y,
                 brush: true,
                 rotation: 0.0,
             }
