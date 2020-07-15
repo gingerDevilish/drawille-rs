@@ -5,5 +5,8 @@ rust:
     name: rustfmt
   repo_checkers:
     - name: rust-clippy
+      project_roots:
+        - proj1
+        - proj3
       config:
         output: all
