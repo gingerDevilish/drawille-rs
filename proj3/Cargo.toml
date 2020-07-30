@@ -1,0 +1,14 @@
+[package]
+name = "drawille"
+version = "0.2.2"
+authors = ["P1start"]
+description = "Draw to the terminal using braille characters"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/P1start/drawille-rs"
+homepage = "https://github.com/P1start/drawille-rs"
+
+[lib]
+name = "drawille"
+
+[dependencies]
+fnv = "1.0.6"
